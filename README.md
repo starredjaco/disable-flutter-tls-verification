@@ -1,7 +1,14 @@
 # disable-flutter-tls-verification
-A Frida script that disables Flutter's TLS verification
 
-This script works on Android x86, Android x64 and iOS x64. It uses pattern matching to find [ssl_verify_peer_cert in handshake.cc](https://github.com/google/boringssl/blob/master/ssl/handshake.cc#L323)
+A Frida script that disables Flutter's TLS verification. It uses pattern matching to find [ssl_verify_peer_cert in handshake.cc](https://github.com/google/boringssl/blob/master/ssl/handshake.cc#L323)
+
+The following platforms are supported:
+
+* Android (x86, x64, ARM64, ARM)
+* iOS (arm64)
+* Windows (x64)
+* Linux (x64)
+* macOS (arm64)
 
 You can use it via Frida by downloading disable-flutter-tls.js or by using Frida codeshare:
 
@@ -28,4 +35,3 @@ Before creating a GitHub issue, please test the following steps:
     * Alternatively, copy `libflutter.so` or `Flutter` to the correct folder in `libflutter_samples` and run `python3 verify.py`
 
 If you can succesfully intercept all requests from the demo app and your library is not included in the samples, please [open a GitHub issue](https://github.com/NVISOsecurity/disable-flutter-tls-verification/issues) with the app in question. It is possible that the app is using additional SSL pinning plugins, so a combination of this plugin and objection / other Frida scripts may be necessary. This is outside of the scope of this project and you will have to RE yourself to identify additional pinning protections.
-
